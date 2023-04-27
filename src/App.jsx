@@ -1,8 +1,23 @@
 import { useState } from "react";
 import "./App.css";
-import { Container, Typography, Button, CssBaseline } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Button,
+  CssBaseline,
+  AppBar,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+const useStyles = styled((theme) => ({
+  container: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
+}));
 
 function App() {
+  const classes = useStyles();
   const [count, setCount] = useState(0);
 
   return (
