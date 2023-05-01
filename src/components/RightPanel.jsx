@@ -25,9 +25,13 @@ function RightPanel() {
         <Typography>Title</Typography>
         <TextField></TextField>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          flexGrow: "2",
+        }}
+      >
         <Typography>Detail</Typography>
-        <TextField multiline={true} rows="6"></TextField>
+        <TextField multiline={true} rows="8"></TextField>
       </Box>
     </Container>
   );

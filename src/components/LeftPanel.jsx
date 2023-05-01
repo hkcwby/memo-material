@@ -1,4 +1,5 @@
 import { Container, Typography, Button, Box } from "@mui/material";
+import { Add, Clear, Edit } from "@mui/icons-material";
 
 function LeftPanel(props) {
   return (
@@ -28,7 +29,7 @@ function LeftPanel(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "space-evenly",
-          borderStyle: "solid",
+
           minWidth: "20vw",
         }}
       >
@@ -37,11 +38,38 @@ function LeftPanel(props) {
             <Typography key={index} sx={{ margin: "1vh", flexGrow: "2" }}>
               {item}
             </Typography>
-            <Button>X</Button>
+            <Edit
+              sx={{
+                borderStyle: "solid",
+                borderRadius: "20%",
+                margin: "1vh",
+                "&:hover": {
+                  border: "1px solid #00FF00",
+                  color: "gray",
+                  backgroundColor: "lightblue",
+                },
+              }}
+            />
+            <Clear
+              sx={{
+                borderStyle: "solid",
+                borderRadius: "20%",
+                margin: "1vh",
+                margin: "1vh",
+                "&:hover": {
+                  border: "red",
+                  color: "gray",
+                  backgroundColor: "red",
+                },
+              }}
+            />
           </Box>
         ))}
       </Box>
-      <Button>Compose</Button>
+      {/* <Button variant="outlined" sx={{ margin: "4vh" }}>
+        Compose
+      </Button> */}
+      <Add sx={{ margin: "4vh" }} />
     </Container>
   );
 }

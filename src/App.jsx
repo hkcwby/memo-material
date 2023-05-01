@@ -36,7 +36,6 @@ function App() {
       <Container
         sx={{
           display: "flex",
-          borderStyle: "solid",
         }}
       >
         <LeftPanel memos={memos}></LeftPanel>
