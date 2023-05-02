@@ -38,7 +38,9 @@ function LeftPanel(props) {
             <Typography key={item.id} sx={{ margin: "1vh", flexGrow: "2" }}>
               {item.title}
             </Typography>
+
             <Edit
+              onClick={() => props.onMemoClick(item.id)}
               sx={{
                 borderStyle: "solid",
                 borderRadius: "20%",
@@ -50,7 +52,9 @@ function LeftPanel(props) {
                 },
               }}
             />
+
             <Clear
+              onClick={() => props.onDeleteClick(item.id)}
               sx={{
                 borderStyle: "solid",
                 borderRadius: "20%",
@@ -65,10 +69,20 @@ function LeftPanel(props) {
           </Box>
         ))}
       </Box>
-      {/* <Button variant="outlined" sx={{ margin: "4vh" }}>
-        Compose
-      </Button> */}
-      <Add sx={{ margin: "4vh" }} />
+      <Add
+        onClick={props.onComposeClick}
+        sx={{
+          margin: "4vh",
+          borderStyle: "solid",
+          borderRadius: "20%",
+
+          "&:hover": {
+            border: "1px solid black",
+            color: "darkgray",
+            backgroundColor: "grey",
+          },
+        }}
+      />
     </Container>
   );
 }

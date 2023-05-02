@@ -1,6 +1,7 @@
 import { Container, Typography, Box, TextField } from "@mui/material";
+import { Save } from "@mui/icons-material";
 
-function RightPanel() {
+function RightPanel(props) {
   return (
     <Container
       id="right-panel"
@@ -21,9 +22,12 @@ function RightPanel() {
       >
         Memo Detail
       </Typography>
-      <Box>
+      <Box sx={{ margin: "2vh" }}>
         <Typography>Title</Typography>
-        <TextField></TextField>
+        <TextField
+          value={props.title ? props.title : ""}
+          onChange={props.onChangeTitle}
+        ></TextField>
       </Box>
       <Box
         sx={{
@@ -31,8 +35,26 @@ function RightPanel() {
         }}
       >
         <Typography>Detail</Typography>
-        <TextField multiline={true} rows="8"></TextField>
+        <TextField
+          value={props.detail ? props.detail : ""}
+          multiline={true}
+          rows="8"
+          onChange={props.onChangeDetail}
+        ></TextField>
       </Box>
+      <Save
+        onClick={props.onSubmit}
+        sx={{
+          margin: "4vh",
+          borderStyle: "solid",
+          borderRadius: "20%",
+          "&:hover": {
+            border: "1px solid black",
+            color: "darkgray",
+            backgroundColor: "grey",
+          },
+        }}
+      ></Save>
     </Container>
   );
 }
