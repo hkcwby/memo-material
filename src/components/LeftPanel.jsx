@@ -35,18 +35,18 @@ function LeftPanel(props) {
       >
         {props.memos.map((item, index) => (
           <Box sx={{ display: "flex" }}>
-            <Typography key={index} sx={{ margin: "1vh", flexGrow: "2" }}>
-              {item}
+            <Typography key={item.id} sx={{ margin: "1vh", flexGrow: "2" }}>
+              {item.title}
             </Typography>
-            {/* <Edit
+            <Edit
               sx={{
                 borderStyle: "solid",
                 borderRadius: "20%",
                 margin: "1vh",
                 "&:hover": {
-                  border: "1px solid #00FF00",
-                  color: "gray",
-                  backgroundColor: "lightblue",
+                  border: "1px solid black",
+                  color: "darkgray",
+                  backgroundColor: "grey",
                 },
               }}
             />
@@ -56,12 +56,12 @@ function LeftPanel(props) {
                 borderRadius: "20%",
                 margin: "1vh",
                 "&:hover": {
-                  border: "red",
-                  color: "gray",
-                  backgroundColor: "red",
+                  border: "1px solid black",
+                  color: "darkgray",
+                  backgroundColor: "grey",
                 },
               }}
-            /> */}
+            />
           </Box>
         ))}
       </Box>

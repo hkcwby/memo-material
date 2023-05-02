@@ -8,7 +8,11 @@ import { Container, Typography, CssBaseline, Box } from "@mui/material";
 function App() {
   const ref = firebase.firestore().collection("memos");
   //the memo data as stored in the database, in this case we are just using a dummy file to represent our database
-  const [memos, setMemos] = useState(["hello", "world", "now"]);
+  const [memos, setMemos] = useState([
+    { id: 1, title: "hello" },
+    { id: 2, title: "world" },
+    { id: 3, title: "now" },
+  ]);
   //useState variable for both the title and detail of our present memo shown on the right panel
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
