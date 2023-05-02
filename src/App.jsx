@@ -1,21 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LeftPanel from "./components/LeftPanel.jsx";
 import RightPanel from "./components/RightPanel.jsx";
+import firebase from "./firebase.js";
 
-import {
-  Container,
-  Typography,
-  Button,
-  CssBaseline,
-  Box,
-  TextField,
-} from "@mui/material";
-import { Add, Settings, VerticalAlignCenter } from "@mui/icons-material";
+import { Container, Typography, CssBaseline, Box } from "@mui/material";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const ref = firebase.firestore().collection("memos");
+  //the memo data as stored in the database, in this case we are just using a dummy file to represent our database
+  const [memos, setMemos] = useState(["hello", "world", "now"]);
+  //useState variable for both the title and detail of our present memo shown on the right panel
+  const [title, setTitle] = useState("");
+  const [detail, setDetail] = useState("");
+  // a counter for creating new unique memo id
+  const [counter, setCounter] = useState(0);
+  //a tracking variable to keep track of the current memo based on its unique id
+  const [tracking, setTracking] = useState(0);
+  //set a validation variable to catch errors and provide user feedback
+  const [validation, setValidation] = useState("");
 
-  const memos = ["hello World", "goodbye universe", "something else"];
+  function getMemosDB() {
+    ref.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setMemos(items);
+      setCounter(items[items.length - 1].id + 1);
+      setTracking(items[items.length - 1].id + 1);
+    });
+  }
+
+  //load the data once after mounting
+
+  useEffect(() => {
+    getMemosDB();
+  }, []);
+
+  // const memos = ["hello World", "goodbye universe", "something else"];
 
   return (
     <>

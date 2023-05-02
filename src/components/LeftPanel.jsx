@@ -38,7 +38,7 @@ function LeftPanel(props) {
             <Typography key={index} sx={{ margin: "1vh", flexGrow: "2" }}>
               {item}
             </Typography>
-            <Edit
+            {/* <Edit
               sx={{
                 borderStyle: "solid",
                 borderRadius: "20%",
@@ -55,14 +55,13 @@ function LeftPanel(props) {
                 borderStyle: "solid",
                 borderRadius: "20%",
                 margin: "1vh",
-                margin: "1vh",
                 "&:hover": {
                   border: "red",
                   color: "gray",
                   backgroundColor: "red",
                 },
               }}
-            />
+            /> */}
           </Box>
         ))}
       </Box>
