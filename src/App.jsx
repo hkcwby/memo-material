@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import LeftPanel from "./components/LeftPanel.jsx";
 import RightPanel from "./components/RightPanel.jsx";
 import firebase from "./firebase.js";
-
 import { Container, Typography, CssBaseline, Box } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
+import { theme, darkTheme } from "./theme.js";
+import { DarkMode, LightMode } from "@mui/icons-material";
 
 function App() {
   const ref = firebase.firestore().collection("memos");
@@ -14,6 +16,7 @@ function App() {
     { id: 3, title: "now" },
   ]);
   //useState variable for both the title and detail of our present memo shown on the right panel
+  const [mode, setMode] = useState(true);
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
   // a counter for creating new unique memo id
@@ -22,6 +25,10 @@ function App() {
   const [tracking, setTracking] = useState(0);
   //set a validation variable to catch errors and provide user feedback
   const [validation, setValidation] = useState("");
+
+  function darkModeToggle() {
+    setMode(!mode);
+  }
 
   function getMemosDB() {
     ref.onSnapshot((querySnapshot) => {
@@ -112,45 +119,58 @@ function App() {
   }
 
   return (
-    <>
-      <CssBaseline />
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "grey",
-          height: "30vh",
-        }}
-      >
-        <Typography variant="h2" align="center" color="white" sx={{}}>
-          Simple Memo Task App Mockup (Material UI)
-        </Typography>
-      </Box>
-      <Container
-        sx={{
-          display: "flex",
-          "@media (max-width: 40rem)": {
-            flexDirection: "column",
-          },
-        }}
-      >
-        <LeftPanel
-          memos={memos}
-          onMemoClick={handleMemoClick}
-          onDeleteClick={handleDeleteClick}
-          onComposeClick={handleComposeClick}
-        ></LeftPanel>
-        <RightPanel
-          title={title}
-          detail={detail}
-          onSubmit={handleMemoSubmit}
-          onChangeTitle={(e) => handleTitleChange(e)}
-          onChangeDetail={(e) => handleDetailChange(e)}
-          validation={validation}
-        ></RightPanel>
-      </Container>
-    </>
+    <ThemeProvider theme={mode ? theme : darkTheme}>
+      <>
+        <CssBaseline />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "grey",
+            height: "30vh",
+          }}
+        >
+          {mode ? (
+            <DarkMode
+              sx={{ alignSelf: "start", margin: "1vh" }}
+              onClick={() => darkModeToggle()}
+            />
+          ) : (
+            <LightMode
+              sx={{ alignSelf: "start", margin: "1vh" }}
+              onClick={() => darkModeToggle()}
+            />
+          )}
+          <Typography variant="h2" align="center" color="white" sx={{}}>
+            Simple Memo Task App Mockup (Material UI)
+          </Typography>
+        </Box>
+        <Container
+          sx={{
+            display: "flex",
+            "@media (max-width: 40rem)": {
+              flexDirection: "column",
+            },
+          }}
+        >
+          <LeftPanel
+            memos={memos}
+            onMemoClick={handleMemoClick}
+            onDeleteClick={handleDeleteClick}
+            onComposeClick={handleComposeClick}
+          ></LeftPanel>
+          <RightPanel
+            title={title}
+            detail={detail}
+            onSubmit={handleMemoSubmit}
+            onChangeTitle={(e) => handleTitleChange(e)}
+            onChangeDetail={(e) => handleDetailChange(e)}
+            validation={validation}
+          ></RightPanel>
+        </Container>
+      </>
+    </ThemeProvider>
   );
 }
 
