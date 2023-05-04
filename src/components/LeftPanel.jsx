@@ -35,10 +35,23 @@ function LeftPanel(props) {
       >
         {props.memos.map((item, index) => (
           <Box sx={{ display: "flex" }}>
-            <Typography key={item.id} sx={{ margin: "1vh", flexGrow: "2" }}>
-              {item.title}
-            </Typography>
-
+            {item.id == props.tracking ? (
+              <Typography
+                key={item.id}
+                id={`list-item-${item.id}`}
+                sx={{ margin: "1vh", flexGrow: "2", fontWeight: "bold" }}
+              >
+                {item.title}
+              </Typography>
+            ) : (
+              <Typography
+                key={item.id}
+                id={`list-item-${item.id}`}
+                sx={{ margin: "1vh", flexGrow: "2" }}
+              >
+                {item.title}
+              </Typography>
+            )}
             <Edit
               onClick={() => props.onMemoClick(item.id)}
               sx={{
@@ -52,7 +65,6 @@ function LeftPanel(props) {
                 },
               }}
             />
-
             <Clear
               onClick={() => props.onDeleteClick(item.id)}
               sx={{
@@ -75,7 +87,6 @@ function LeftPanel(props) {
           margin: "4vh",
           borderStyle: "solid",
           borderRadius: "20%",
-
           "&:hover": {
             border: "1px solid black",
             color: "darkgray",

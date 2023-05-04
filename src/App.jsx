@@ -10,11 +10,9 @@ import { DarkMode, LightMode } from "@mui/icons-material";
 function App() {
   const ref = firebase.firestore().collection("memos");
   //the memo data as stored in the database, in this case we are just using a dummy file to represent our database
-  const [memos, setMemos] = useState([
-    { id: 1, title: "hello" },
-    { id: 2, title: "world" },
-    { id: 3, title: "now" },
-  ]);
+  // example of a memo array [{ id: 1, title: "hello", detail:"world" },]
+  const [memos, setMemos] = useState([]);
+
   //useState variable for both the title and detail of our present memo shown on the right panel
   const [mode, setMode] = useState(true);
   const [title, setTitle] = useState("");
@@ -38,7 +36,9 @@ function App() {
       });
       setMemos(items);
       setCounter(items[items.length - 1].id + 1);
-      setTracking(items[items.length - 1].id + 1);
+      setTitle(items[0].title);
+      setDetail(items[0].detail);
+      setTracking(items[0].id);
     });
   }
 
@@ -156,6 +156,7 @@ function App() {
         >
           <LeftPanel
             memos={memos}
+            tracking={tracking}
             onMemoClick={handleMemoClick}
             onDeleteClick={handleDeleteClick}
             onComposeClick={handleComposeClick}
