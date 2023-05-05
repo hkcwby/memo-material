@@ -94,8 +94,8 @@ function App() {
       return;
     }
 
-    if (memos.length >= 10) {
-      setValidation("limit of 10 memos for demonstrative purposes");
+    if (memos.length >= 8) {
+      setValidation("limit of 8 memos for demonstrative purposes");
       return;
     }
 

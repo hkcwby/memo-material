@@ -42,6 +42,7 @@ function RightPanel(props) {
           onChange={props.onChangeDetail}
         ></TextField>
       </Box>
+      <Typography sx={{ color: "red" }}>{props.validation}</Typography>
       <Save
         onClick={props.onSubmit}
         sx={{
