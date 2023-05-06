@@ -36,16 +36,17 @@ function App() {
       });
       setMemos(items);
       setCounter(items[items.length - 1].id + 1);
-      setTitle(items[0].title);
-      setDetail(items[0].detail);
-      setTracking(items[0].id);
+
+      //   setTitle(items[0].title);
+      //   setDetail(items[0].detail);
+      //   setTracking(items[0].id);
     });
   }
 
   //load the data once after mounting
 
   useEffect(() => {
-    getMemosDB();
+    getMemosDB(true);
   }, []);
 
   //a function to display relevant memo information(right panel) when memo item clicked(leftpanel)
@@ -69,12 +70,10 @@ function App() {
   //update the stored title of the memo as it is typed
   function handleTitleChange(e) {
     setTitle(e.target.value);
-    console.log(title);
   }
   //update the stored detail of the memo as it is typed
   function handleDetailChange(e) {
     setDetail(e.target.value);
-    console.log(detail);
   }
 
   async function setMemoByID(memoID, memoDataObject) {
@@ -98,7 +97,7 @@ function App() {
       setValidation("limit of 8 memos for demonstrative purposes");
       return;
     }
-
+    setTracking(counter + 1);
     setMemoByID(String(tracking), {
       title: title,
       id: tracking,
