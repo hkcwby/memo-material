@@ -6,6 +6,7 @@ import { Container, Typography, CssBaseline, Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { theme, darkTheme } from "./theme.js";
 import { DarkMode, LightMode } from "@mui/icons-material";
+import "./App.css";
 
 function App() {
   const ref = firebase.firestore().collection("memos");
@@ -119,7 +120,7 @@ function App() {
 
   return (
     <ThemeProvider theme={mode ? theme : darkTheme}>
-      <>
+      <Box className="smartphone">
         <CssBaseline />
         <Box
           sx={{
@@ -169,7 +170,7 @@ function App() {
             validation={validation}
           ></RightPanel>
         </Container>
-      </>
+      </Box>
     </ThemeProvider>
   );
 }
