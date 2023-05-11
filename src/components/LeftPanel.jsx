@@ -23,8 +23,7 @@ function LeftPanel(props) {
           margin: "8vh",
 
           "@media (max-width: 40rem)": {
-            fontSize: "1rem",
-            margin: "2vh",
+            display: "none",
           },
         }}
       >
@@ -40,6 +39,7 @@ function LeftPanel(props) {
           minWidth: "20vw",
           "@media (max-width: 40rem)": {
             flexGrow: 0,
+            marginTop: "2vh",
           },
         }}
       >
