@@ -18,6 +18,11 @@ function LeftPanel(props) {
         sx={{
           fontWeight: "bold",
           margin: "8vh",
+
+          "@media (max-width: 40rem)": {
+            fontSize: "1rem",
+            margin: "2vh",
+          },
         }}
       >
         Memos
@@ -29,7 +34,6 @@ function LeftPanel(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "space-evenly",
-
           minWidth: "20vw",
         }}
       >
@@ -39,7 +43,14 @@ function LeftPanel(props) {
               <Typography
                 key={item.id}
                 id={`list-item-${item.id}`}
-                sx={{ margin: "1vh", flexGrow: "2", fontWeight: "bold" }}
+                sx={{
+                  margin: "1vh",
+                  flexGrow: "2",
+                  fontWeight: "bold",
+                  "@media (max-width: 40rem)": {
+                    fontSize: "0.8rem",
+                  },
+                }}
               >
                 {item.title}
               </Typography>
@@ -47,7 +58,13 @@ function LeftPanel(props) {
               <Typography
                 key={item.id}
                 id={`list-item-${item.id}`}
-                sx={{ margin: "1vh", flexGrow: "2" }}
+                sx={{
+                  margin: "1vh",
+                  flexGrow: "2",
+                  "@media (max-width: 40rem)": {
+                    fontSize: "0.8rem",
+                  },
+                }}
               >
                 {item.title}
               </Typography>

@@ -129,6 +129,10 @@ function App() {
             justifyContent: "center",
             backgroundColor: "grey",
             height: "30vh",
+            "@media (max-width: 40rem)": {
+              height: "10vw",
+              fontSize: "1rem",
+            },
           }}
         >
           {mode ? (
@@ -142,7 +146,16 @@ function App() {
               onClick={() => darkModeToggle()}
             />
           )}
-          <Typography variant="h2" align="center" color="white" sx={{}}>
+          <Typography
+            variant="h2"
+            align="center"
+            color="white"
+            sx={{
+              "@media (max-width: 40rem)": {
+                fontSize: "0.8rem",
+              },
+            }}
+          >
             Simple Memo Task App Mockup (Material UI)
           </Typography>
         </Box>
