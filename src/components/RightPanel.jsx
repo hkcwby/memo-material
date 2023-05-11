@@ -11,6 +11,9 @@ function RightPanel(props) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-around",
+        "@media (max-width: 40rem)": {
+          marginTop: "10px",
+        },
       }}
     >
       <Typography
@@ -18,6 +21,9 @@ function RightPanel(props) {
         sx={{
           fontWeight: "bold",
           margin: "8vh",
+          "@media (max-width: 40rem)": {
+            display: "none",
+          },
         }}
       >
         Memo Detail

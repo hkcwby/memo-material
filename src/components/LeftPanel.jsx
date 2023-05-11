@@ -11,6 +11,9 @@ function LeftPanel(props) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-around",
+        "@media (max-width: 40rem)": {
+          height: "20vh",
+        },
       }}
     >
       <Typography
@@ -35,6 +38,9 @@ function LeftPanel(props) {
           flexDirection: "column",
           alignItems: "space-evenly",
           minWidth: "20vw",
+          "@media (max-width: 40rem)": {
+            flexGrow: 0,
+          },
         }}
       >
         {props.memos.map((item, index) => (
@@ -80,6 +86,10 @@ function LeftPanel(props) {
                   color: "darkgray",
                   backgroundColor: "grey",
                 },
+                "@media (max-width: 40rem)": {
+                  fontSize: "1.3rem",
+                  margin: ".5vh",
+                },
               }}
             />
             <Clear
@@ -93,24 +103,40 @@ function LeftPanel(props) {
                   color: "darkgray",
                   backgroundColor: "grey",
                 },
+                "@media (max-width: 40rem)": {
+                  fontSize: "1.3rem",
+                  margin: ".5vh",
+                },
               }}
             />
           </Box>
         ))}
       </Box>
-      <Add
-        onClick={props.onComposeClick}
+      <Box
         sx={{
-          margin: "4vh",
-          borderStyle: "solid",
-          borderRadius: "20%",
-          "&:hover": {
-            border: "1px solid black",
-            color: "darkgray",
-            backgroundColor: "grey",
+          "@media (max-width: 40rem)": {
+            flexGrow: 2,
           },
         }}
-      />
+      >
+        <Add
+          onClick={props.onComposeClick}
+          sx={{
+            margin: "4vh",
+            borderStyle: "solid",
+            borderRadius: "20%",
+            "&:hover": {
+              border: "1px solid black",
+              color: "darkgray",
+              backgroundColor: "grey",
+            },
+            "@media (max-width: 40rem)": {
+              fontSize: "1.3rem",
+              margin: ".5vh",
+            },
+          }}
+        />
+      </Box>
     </Container>
   );
 }

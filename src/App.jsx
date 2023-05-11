@@ -164,6 +164,8 @@ function App() {
             display: "flex",
             "@media (max-width: 40rem)": {
               flexDirection: "column",
+              overflow: "scroll",
+              height: "470px",
             },
           }}
         >
